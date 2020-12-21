@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
         model.hasMany(models.DocterTypes, {
             foreignKey: "docter_id"
         })
+        model.hasMany(models.Reservations, {
+            foreignKey: "docter_id"
+        })
     }
     return model;
 }

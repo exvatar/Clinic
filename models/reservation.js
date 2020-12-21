@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
         {
             reservationDate: DataTypes.STRING,
             creatDate: DataTypes.STRING,
+            detail: DataTypes.STRING,
         },
         {
             tableName: "reservations",
@@ -19,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
         });
         model.belongsTo(models.Types, {
             foreignKey: "type_id"
+        });
+        model.belongsTo(models.Docters, {
+            foreignKey: "docter_id"
         });
     }
     return model;

@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
             idCardNumber: DataTypes.STRING,
             address: DataTypes.STRING,
             mobilePhone: DataTypes.STRING,
-            homePhone: DataTypes.STRING
+            homePhone: DataTypes.STRING,
+            role: DataTypes.STRING
         },
         {
             tableName: "users",

@@ -23,7 +23,6 @@ const register = async (req, res) => {
         console.log("err");
         res.status(400).send({ message: "User already taken" });
     } else {
-        console.log("register");
         const salt = bcryptjs.genSaltSync(12);
         const hashedPassword = bcryptjs.hashSync(password, salt);
 
@@ -69,4 +68,14 @@ const login = async (req, res) => {
         res.status(400).send({ message: "Not found account" })
     }
 }
-module.exports = { register, login };
+const getProfileUser = async (req, res) => {
+    const userId = req.user.id;
+    const targetUser = await db.User.findOne({
+        where: {
+            id: userId
+        }
+    })
+    if (targetUser) return res.status(200).send(targetUser)
+    else return res.status(404).send({ message: 'Not found user' })
+}
+module.exports = { register, login, getProfileUser };
