@@ -36,7 +36,8 @@ const register = async (req, res) => {
             idCardNumber,
             address,
             mobilePhone,
-            homePhone
+            homePhone,
+            role: ""
         });
         const newUser = await db.User.findOne({ where: { email } })
         if (newUser) {
@@ -60,7 +61,7 @@ const login = async (req, res) => {
                     expiresIn: 3600
                 }
             );
-            res.status(200).send({ token });
+            res.status(200).send({ token, role: targetUser.role });
         } else {
             res.status(400).send({ message: "Wrong password" });
         }

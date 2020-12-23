@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
             reservationDate: DataTypes.STRING,
             creatDate: DataTypes.STRING,
             detail: DataTypes.STRING,
+            status: DataTypes.STRING
         },
         {
             tableName: "reservations",
